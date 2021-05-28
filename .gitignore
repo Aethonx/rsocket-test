@@ -2,3 +2,4 @@
 /.gradle/
 /rsocket-spigot/build/
 /rsocket-velocity/build/
+/.idea/
