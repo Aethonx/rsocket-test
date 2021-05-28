@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
+    }
+}
+
+allprojects {
+    apply plugin: 'com.github.johnrengelman.shadow'
+    apply plugin: 'java'
+
+    group 'io.shaded.rsocket'
+    version '0.0.1-SNAPSHOT'
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility  = JavaVersion.VERSION_1_8
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'https://repo.spring.io/milestone' }  // Reactor milestones (if needed)
+    }
+
+    dependencies {
+        compile 'io.rsocket:rsocket-core:1.1.0'
+        compile 'io.rsocket:rsocket-transport-netty:1.1.0'
+    }
+
+    tasks.named("build") {
+        dependsOn(tasks.named("shadowJar"))
+    }
+}

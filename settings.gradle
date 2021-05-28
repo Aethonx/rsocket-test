@@ -1,0 +1,5 @@
+rootProject.name = 'rsocket-test'
+
+include('rsocket-velocity', 'rsocket-spigot')
+include 'rsocket-spigot'
+
